@@ -27,9 +27,9 @@ class PrototypesController < ApplicationController
     @comments= @prototype.comments.includes(:user)
     #showアクションにインスタンス変数@commentsを定義し、その投稿に紐づくすべてのコメントを代入するための記述をした
 
-end
+ end
 
-def
+
   def destroy
     @prototype = Prototype.find (params[:id])
     @prototype.destroy
