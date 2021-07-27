@@ -31,14 +31,14 @@ class PrototypesController < ApplicationController
 
 
   def destroy
-    @prototype = Prototype.find (params[:id])
+    @prototype = Prototype.find(params[:id])
     @prototype.destroy
     redirect_to root_path
   end
 
   def edit
 
-    @prototype = Prototype.find (params[:id])
+    @prototype = Prototype.find(params[:id])
     unless @prototype.user_id == current_user.id
       redirect_to action: :index
      end
@@ -46,7 +46,7 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    @prototype = Prototype.find (params[:id])  
+    @prototype = Prototype.find(params[:id])  
     if @prototype.update(prototype_params)
       redirect_to prototype_path(@prototype.id)
     else
