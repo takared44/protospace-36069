@@ -1,6 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :authenticate_user! ,only:[:new,:edit,:destroy]
-  before_action :move_to_index, except: [:new,:index,:show]
+  before_action :move_to_index, except: [:new,:index,:show,:create]
   def index
     query = "SELECT * FROM prototypes"
     @prototypes = Prototype.find_by_sql(query)
@@ -59,6 +59,8 @@ class PrototypesController < ApplicationController
     params.require(:prototype).permit(:title, :catch_copy, :concept,:image).merge(user_id: current_user.id)
   end
   def move_to_index
-  
+    unless @prototype.user_id == current_user.id
+      redirect_to action: :index
+     end
   end
 end
