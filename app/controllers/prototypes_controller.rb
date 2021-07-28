@@ -1,6 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :authenticate_user! ,only:[:new,:edit,:destroy]
-  before_action :set_prototype, only: [:destroy,:edit]
+  before_action :set_prototype, only: [:destroy,:edit,:update]
   before_action :move_to_index, except: [:new,:index,:show,:create]
   def index
     query = "SELECT * FROM prototypes"
